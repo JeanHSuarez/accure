@@ -15,7 +15,7 @@ public class TimeLogRController {
     TimeLogService timeLogService;
 
     @GetMapping("{id}")
-    public TimeLog findTimeLog(@PathVariable Long id) throws  EntityNotFoundException{
+    public TimeLog findTimeLog(@PathVariable Long id) throws EntityNotFoundException{
         TimeLog t = timeLogService.find(id);
         return t;
     }
