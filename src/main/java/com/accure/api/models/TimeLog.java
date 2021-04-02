@@ -1,13 +1,15 @@
 package com.accure.api.models;
 
 import java.io.Serializable;
+import java.text.NumberFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
-
-
+import javax.money.CurrencyUnit;
+import javax.money.Monetary;
 import javax.persistence.*;
 
+import org.javamoney.moneta.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -17,8 +19,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name="timeLogs")
 public class TimeLog implements Serializable {
 
+	private static final CurrencyUnit usd = Monetary.getCurrency("USD");
     private static final long serialVersionUID = 1L;
     private static final int minsPerBillingUnit = 15;
+    private static final double costPerUnit = 4.25;
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,7 +46,9 @@ public class TimeLog implements Serializable {
     @Column(name="billingUnits")
     private Long billingUnits;
     
-
+    @Column(name="billableAmount")
+    private String billableAmount;
+    
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -89,6 +96,19 @@ public class TimeLog implements Serializable {
     
     public void setBillingUnits(Long billingUnits) {
     	this.billingUnits = billingUnits;
+    	Double billable = costPerUnit * (double)billingUnits;
+    	NumberFormat formatter = NumberFormat.getCurrencyInstance();
+    	formatter.format(billable);
+    	Money billAm = Money.of(billable, usd).with(Monetary.getDefaultRounding());
+    	setBillableAmount(billAm.toString());  	
+    }
+    
+    public String getBillableAmount() {
+    	return this.billableAmount;
+    }
+    
+    public void setBillableAmount(String billableAmount) {
+    	this.billableAmount = billableAmount;
     }
     
     public User getUser() {
@@ -97,9 +117,7 @@ public class TimeLog implements Serializable {
     
     public void setUser(User user) {
     	this.user = user;
-    }
-    
-    
+    } 
 
 }
 
