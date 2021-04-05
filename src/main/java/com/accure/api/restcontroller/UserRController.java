@@ -1,8 +1,13 @@
 package com.accure.api.restcontroller;
 
+import com.accure.api.models.TimeLog;
 import com.accure.api.models.User;
 import com.accure.api.services.EntityNotFoundException;
 import com.accure.api.services.UserService;
+
+import java.util.List;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +24,20 @@ public class UserRController {
 
     @Autowired
     UserService userService;
-
+    
+    @GetMapping("users")
+    public List<User> getUsers() throws EntityNotFoundException{
+    	
+    	List<User> users = userService.findAll();
+    	return users;  	
+    }
+    
+    @GetMapping("{id}/timelogs")
+    public List<TimeLog> findByTimeLogId(@PathVariable Long id) throws EntityNotFoundException {
+    	User u = userService.find(id);
+    	return u.getTimeLogList();
+    }
+    
     @GetMapping("{id}")
     public User findUser(@PathVariable Long id) throws EntityNotFoundException {
         User u = userService.find(id);
@@ -35,4 +53,6 @@ public class UserRController {
     public String deleteById(@PathVariable Long id) throws EntityNotFoundException {
         return userService.delete(id);
     }
+    
+    
 }

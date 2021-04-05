@@ -2,8 +2,12 @@ package com.accure.api.restcontroller;
 
 
 import com.accure.api.models.Organization;
+import com.accure.api.models.User;
 import com.accure.api.services.EntityNotFoundException;
 import com.accure.api.services.OrganizationService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +22,12 @@ public class OrganizationRController {
     public Organization findOrganization(@PathVariable Long orgId) throws  EntityNotFoundException{
         Organization o = organizationService.find(orgId);
         return o;
+    }
+    
+    @GetMapping("{orgId}/users")
+    public List <User> findByOrgId(@PathVariable Long orgId) throws  EntityNotFoundException{
+        Organization o = organizationService.find(orgId);
+        return o.getUserList();
     }
 
     @PostMapping("add")

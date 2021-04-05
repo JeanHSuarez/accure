@@ -20,8 +20,7 @@ public class Organization implements Serializable {
 
     @Column(name = "name", length = 20)
     private String name;
-
-    @JsonBackReference
+    
     @JsonIgnore
     @OneToMany(mappedBy = "organization", fetch = FetchType.EAGER)
     List<User> userList;

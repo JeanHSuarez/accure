@@ -12,7 +12,6 @@ import javax.persistence.*;
 import org.javamoney.moneta.Money;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -48,6 +47,9 @@ public class TimeLog implements Serializable {
     
     @Column(name="billableAmount")
     private String billableAmount;
+    
+    @Column(name="organization")
+    private Organization org;
     
     @ManyToOne
     @JoinColumn(name = "userId")
@@ -117,6 +119,7 @@ public class TimeLog implements Serializable {
     
     public void setUser(User user) {
     	this.user = user;
+    	System.out.println(user.getOrganization());
     } 
 
 }

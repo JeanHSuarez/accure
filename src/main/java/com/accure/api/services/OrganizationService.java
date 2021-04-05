@@ -12,6 +12,7 @@ public class OrganizationService {
 
     @Autowired
     OrganizationDAO organizationDAO;
+    
 
     public Organization find(Long orgId) throws EntityNotFoundException {
         Organization o = null;
