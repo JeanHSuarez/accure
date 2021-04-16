@@ -11,12 +11,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
-@RequestMapping(path = "/organization")
+@RequestMapping(path = "/org")
 public class OrganizationRController {
 
     @Autowired
     OrganizationService organizationService;
+    
+    @GetMapping("orgs")
+    public List<Organization> getOrgs() throws EntityNotFoundException{
+    	List<Organization> orgs = organizationService.findAll();
+    	return orgs;
+    }
 
     @GetMapping("{orgId}")
     public Organization findOrganization(@PathVariable Long orgId) throws  EntityNotFoundException{

@@ -47,10 +47,7 @@ public class TimeLog implements Serializable {
     
     @Column(name="billableAmount")
     private String billableAmount;
-    
-    @Column(name="organization")
-    private Organization org;
-    
+        
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
@@ -119,7 +116,6 @@ public class TimeLog implements Serializable {
     
     public void setUser(User user) {
     	this.user = user;
-    	System.out.println(user.getOrganization());
     } 
 
 }

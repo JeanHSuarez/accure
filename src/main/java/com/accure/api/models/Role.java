@@ -18,32 +18,32 @@ public class Role implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "roleId")
-    private Integer roleId;
+    @Column(name = "id")
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "name", length=20)
-    private EnumRoles name;
+    private Roles name;
 
     public Role() {}
 
-    public Role(EnumRoles name) {
+    public Role(Roles name) {
         this.name = name;
     }
 
-    public Integer getId() {
-        return roleId;
+    public Long getId() {
+        return id;
     }
 
-    public void setId(Integer roleId) {
-        this.roleId = roleId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public EnumRoles getName() {
+    public Roles getName() {
         return name;
     }
 
-    public void setName(EnumRoles name) {
+    public void setName(Roles name) {
         this.name = name;
     }
 

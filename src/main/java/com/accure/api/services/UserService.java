@@ -22,52 +22,28 @@ public class UserService {
     
     @Autowired
     OrganizationDAO organizationDAO;
-    
-
     public List <User> findAll() throws EntityNotFoundException {
     	List<User> users = userDAO.findAll();
     	return users;
-    	
     }
     
-    public List <User> findByOrgId(Long orgId) throws EntityNotFoundException {
-    	
-  
+    public List<User> findByOrgId(Long orgId) throws EntityNotFoundException {
     	Organization o = null;
     	List<User> users;
     	Optional<Organization> org = organizationDAO.findById(orgId);
 
-    	
-    	
     	if (org.isPresent()) {
     		o = org.get();
     		users = o.getUserList();
-    		
     	} else {
-    		throw new EntityNotFoundException(orgId + " doesn't exist");
-    	}
-    	
+            throw new EntityNotFoundException(orgId + " doesn't exist");
+        }
     	return users;
     }
-//    
-//    public List<TimeLog> showlogs(Long id) throws EntityNotFoundException {
-//    	List<TimeLog> loglist = null;
-//    	User u = null;
-//    	Optional<User> opt = userDAO.findById(id);
-//    	
-//        if (opt.isPresent()) {
-//            u = opt.get();
-//            loglist = u.getTimeLogList();
-//        } else {
-//            throw new EntityNotFoundException(id + " doesn't exist");
-//        }
-//        return loglist;
-//    }
 
     public User find(Long id) throws EntityNotFoundException {
         User u = null;
         Optional<User> opt = userDAO.findById(id);
-
         if (opt.isPresent()) {
             u = opt.get();
         } else {
@@ -77,7 +53,6 @@ public class UserService {
     }
 
     public String insert(User u) {
-
         Optional<User> opt = userDAO.findById(u.getId());
 
         if (!opt.isPresent()) {
@@ -94,7 +69,6 @@ public class UserService {
         if (opt.isPresent()) {
             User u = opt.get();
             userDAO.deleteById(id);
-
         }else {
             throw new EntityNotFoundException("User " + id + " doesn't exist");
         }

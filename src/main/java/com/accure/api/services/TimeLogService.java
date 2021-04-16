@@ -15,8 +15,6 @@ import javax.persistence.EntityNotFoundException;
 
 @Service
 public class TimeLogService {
-
-
     @Autowired
     TimeLogDAO timeLogDAO;
     
@@ -24,21 +22,17 @@ public class TimeLogService {
     UserDAO userDAO;
     
     public List<TimeLog> findByTimeLogId(Long id) throws EntityNotFoundException {
-
     	User u = null;
-    	List<TimeLog> timelogs;
+    	List<TimeLog> userLogs;
     	Optional<User> user = userDAO.findById(id);
  	
     	if (user.isPresent()) {
     		u = user.get();
-    		timelogs = u.getTimeLogList();
-    		
+            userLogs = u.getTimeLogList();
     	} else {
     		throw new EntityNotFoundException(id + " doesn't exist");
     	}
-    	
-    	return timelogs;
-    
+    	return userLogs;
     }
     
     public List<TimeLog> findAll() throws EntityNotFoundException {
