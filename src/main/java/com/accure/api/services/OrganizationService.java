@@ -5,6 +5,7 @@ import com.accure.api.models.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -12,6 +13,12 @@ public class OrganizationService {
 
     @Autowired
     OrganizationDAO organizationDAO;
+    
+    public List<Organization> findAll() throws EntityNotFoundException {
+    	List<Organization> orgs = organizationDAO.findAll();
+    	return orgs;
+    }
+    
 
     public Organization find(Long orgId) throws EntityNotFoundException {
         Organization o = null;

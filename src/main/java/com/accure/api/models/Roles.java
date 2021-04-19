@@ -1,6 +1,5 @@
 package com.accure.api.models;
 
-public enum EnumRoles {
-
+public enum Roles {
     USER, STAFF, ADMIN
 }

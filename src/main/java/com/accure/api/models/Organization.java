@@ -1,5 +1,5 @@
 package com.accure.api.models;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import java.io.Serializable;
@@ -20,8 +20,7 @@ public class Organization implements Serializable {
 
     @Column(name = "name", length = 20)
     private String name;
-
-    @JsonBackReference
+    
     @JsonIgnore
     @OneToMany(mappedBy = "organization", fetch = FetchType.EAGER)
     List<User> userList;
