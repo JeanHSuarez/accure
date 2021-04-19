@@ -16,16 +16,16 @@ public class TestController {
 	}
 	
 	@GetMapping("/user")
-	@PreAuthorize("hasAuthority('USER') or hasAuthority('MODERATOR') or hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('USER') or hasAuthority('STAFF') or hasAuthority('ADMIN')")
 	public String userAccess() {
 		// to connect service or JPA respository
 		return "User Content.";
 	}
 
-	@GetMapping("/mod")
-	@PreAuthorize("hasAuthority('MODERATOR')")
+	@GetMapping("/staff")
+	@PreAuthorize("hasAuthority('STAFF')")
 	public String moderatorAccess() {
-		return "Moderator Board.";
+		return "Staff Board.";
 	}
 
 	@GetMapping("/admin")

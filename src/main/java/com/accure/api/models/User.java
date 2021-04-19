@@ -42,8 +42,8 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     
-//    @Column(name = "active")
-//    private boolean active;
+    @Column(name = "active")
+    private boolean active;
     
     @ManyToOne
     @JoinColumn(name = "orgId", nullable = true)
@@ -98,13 +98,13 @@ public class User implements Serializable {
         this.password = password;
     }
     
-//    public boolean isActive() {
-//        return active;
-//    }
-//
-//    public void setActive(boolean active) {
-//        this.active = active;
-//    }
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
     
     public Organization getOrganization() {
     	return this.organization;
