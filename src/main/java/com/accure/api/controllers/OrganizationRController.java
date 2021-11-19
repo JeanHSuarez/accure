@@ -1,4 +1,4 @@
-package com.accure.api.restcontroller;
+package com.accure.api.controllers;
 
 
 import com.accure.api.models.Organization;
