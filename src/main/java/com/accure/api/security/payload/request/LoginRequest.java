@@ -1,4 +1,4 @@
-package com.accure.api.payload.request;
+package com.accure.api.security.payload.request;
 
 import javax.validation.constraints.NotBlank;
 

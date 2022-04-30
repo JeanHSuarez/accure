@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/timelog")
-public class TimeLogRController {
+public class TimeLogController {
 
     @Autowired
     TimeLogService timeLogService;

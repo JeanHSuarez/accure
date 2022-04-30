@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin
 @RestController
 @RequestMapping(path = "/org")
-public class OrganizationRController {
+public class OrganizationController {
 
     @Autowired
     OrganizationService organizationService;

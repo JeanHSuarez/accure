@@ -22,7 +22,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     public Long id;
 
@@ -43,7 +43,7 @@ public class User implements Serializable {
     private String password;
     
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
     
     @ManyToOne
     @JoinColumn(name = "orgId", nullable = true)
@@ -98,11 +98,11 @@ public class User implements Serializable {
         this.password = password;
     }
     
-    public boolean isActive() {
+    public Boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         this.active = active;
     }
     
@@ -129,6 +129,4 @@ public class User implements Serializable {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-    
-       
 }

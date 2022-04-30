@@ -1,4 +1,4 @@
-package com.accure.api.payload.response;
+package com.accure.api.security.payload.response;
 
 public class MessageResponse {
 	private String message;
