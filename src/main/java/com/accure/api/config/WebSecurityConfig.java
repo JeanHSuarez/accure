@@ -1,4 +1,4 @@
-package com.accure.api.security;
+package com.accure.api.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -58,9 +58,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers("/api/auth/signin").permitAll()
 				.antMatchers("/api/auth/signup").permitAll()
+				.antMatchers("/actuator/**").permitAll()
 				.antMatchers("/timelog/**").permitAll()
-//				.antMatchers("/org/**").permitAll()
-//				.antMatchers("/user/**").permitAll()
+				.antMatchers("/swagger-ui/**").permitAll()
+				.antMatchers("/v3/api-docs/**").permitAll()
 				.anyRequest()
 				.authenticated();
 

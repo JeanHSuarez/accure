@@ -53,13 +53,16 @@ public class UserService {
     }
 
     public String insert(User u) {
-        Optional<User> opt = userDAO.findById(u.getId());
-
-        if (!opt.isPresent()) {
-            userDAO.save(u);
-            return "success";
-        }
-        return u.getId() + " already exist";
+//        Optional<User> opt = userDAO.findById(u.getId());
+//
+//        if (!opt.isPresent()) {
+//            userDAO.save(u);
+//            return "success";
+//        }
+//        return u.getId() + " already exist";
+        //TODO: check existing user and return message if exist
+        userDAO.save(u);
+        return "success";
     }
 
     public String delete(Long id) throws EntityNotFoundException {

@@ -1,10 +1,9 @@
 package com.accure.api;
 
 import com.accure.api.controllers.*;
-import com.accure.api.controllers.OrganizationRController;
-import com.accure.api.controllers.TimeLogRController;
-import com.accure.api.controllers.UserRController;
-import com.accure.api.security.services.UserDetailsImpl;
+import com.accure.api.controllers.OrganizationController;
+import com.accure.api.controllers.TimeLogController;
+import com.accure.api.controllers.UserController;
 import com.accure.api.services.TimeLogService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +19,11 @@ class ApiApplicationTests {
 	@Autowired
 	private TestController testControllerTest;
 	@Autowired
-	private OrganizationRController organizationRControllerTest;
+	private OrganizationController organizationControllerTest;
 	@Autowired
-	private TimeLogRController timeLogRControllerTest;
+	private TimeLogController timeLogControllerTest;
 	@Autowired
-	private UserRController userRControllerTest;
+	private UserController userControllerTest;
 	@Autowired
 	private TimeLogService timeLogService;
 
@@ -33,9 +32,9 @@ class ApiApplicationTests {
 	void contextLoads() {
 		assertThat(authControllerTest).isNotNull();
 		assertThat(testControllerTest).isNotNull();
-		assertThat(organizationRControllerTest).isNotNull();
-		assertThat(timeLogRControllerTest).isNotNull();
-		assertThat(userRControllerTest).isNotNull();
+		assertThat(organizationControllerTest).isNotNull();
+		assertThat(timeLogControllerTest).isNotNull();
+		assertThat(userControllerTest).isNotNull();
 
 		assertThat(timeLogService).isNotNull();
 	}
